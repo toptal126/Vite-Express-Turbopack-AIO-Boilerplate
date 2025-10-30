@@ -17,13 +17,10 @@ const envSchema = z.object({
     .default("development"),
 
   // Database
-  MONGODB_URI: z.string().default("mongodb://localhost:27017/polypulse"),
+  MONGODB_URI: z.string().default("mongodb://localhost:27017/"),
 
   // Frontend URL (for CORS)
   FRONTEND_URL: z.string().default("http://localhost:8818"),
-
-  // Polymarket API
-  POLYMARKET_API_BASE: z.string().default("https://gamma-api.polymarket.com"),
 });
 
 // Validate and parse environment variables
@@ -62,10 +59,6 @@ export const config = {
   cors: {
     frontendUrl: env.FRONTEND_URL,
   },
-
-  polymarket: {
-    apiBase: env.POLYMARKET_API_BASE,
-  },
 } as const;
 
 // Export individual config sections for convenience
@@ -73,7 +66,6 @@ export const {
   server: serverConfig,
   database: databaseConfig,
   cors: corsConfig,
-  polymarket: polymarketConfig,
 } = config;
 
 // Log configuration on startup (excluding sensitive data)
@@ -85,5 +77,4 @@ export const logConfig = () => {
     `  - Database: ${databaseConfig.uri.replace(/\/\/.*@/, "//***:***@")}`
   ); // Hide credentials
   console.log(`  - Frontend URL: ${corsConfig.frontendUrl}`);
-  console.log(`  - Polymarket API: ${polymarketConfig.apiBase}`);
 };

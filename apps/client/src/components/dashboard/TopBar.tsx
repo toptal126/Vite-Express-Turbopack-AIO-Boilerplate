@@ -2,10 +2,8 @@ import { Search, Activity, Settings, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sparkline } from "./Sparkline";
-import { MarketSearchDropdown } from "./MarketSearchDropdown";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
-import { Market } from "@/types/polymarket";
 import { formatPnL, formatPct } from "@/utils/formatters";
 
 interface TopBarProps {
@@ -19,7 +17,6 @@ interface TopBarProps {
     total: { pnl: number; pnlPct: number; spark: number[] };
   };
   onSettingsClick: () => void;
-  onMarketSelect?: (market: Market) => void;
 }
 
 export const TopBar = ({
@@ -29,7 +26,6 @@ export const TopBar = ({
   latency,
   performance,
   onSettingsClick,
-  onMarketSelect,
 }: TopBarProps) => {
   const PnLCard = ({
     label,
@@ -77,7 +73,11 @@ export const TopBar = ({
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
             <Link to="/">
-              <img src="/logo-text-dark.svg" alt="PolyPulse" className="h-12" />
+              <img
+                src="/icons/turbopack.svg"
+                alt="mern-turbopack-aio"
+                className="h-8"
+              />
             </Link>
           </div>
 
@@ -111,35 +111,13 @@ export const TopBar = ({
           </div>
         </div>
 
-        <div className="flex gap-2">
-          {/* Center: Search Active Positions */}
-          <div className="flex-1 max-w-64 relative">
-            <Search className="absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-muted" />
-            <Input
-              placeholder="Search all positions..."
-              className="input-compact pl-7 h-7"
-            />
-          </div>
-          {/* Center: Search all markets */}
-          <div className="flex-1 max-w-64">
-            <MarketSearchDropdown
-              onMarketSelect={onMarketSelect}
-              placeholder="Search all markets..."
-            />
-          </div>
-        </div>
+        <div className="flex gap-2" />
         {/* Navigation */}
         <div className="flex items-center gap-2">
-          <Link to="/markets">
+          <Link to="/explore">
             <Button variant="ghost" size="sm" className="h-7 px-2">
               <BarChart3 className="h-3.5 w-3.5 mr-1" />
-              <span className="text-xs">Markets</span>
-            </Button>
-          </Link>
-          <Link to="/trump-posts">
-            <Button variant="ghost" size="sm" className="h-7 px-2">
-              <Activity className="h-3.5 w-3.5 mr-1" />
-              <span className="text-xs">Trump Posts</span>
+              <span className="text-xs">Explore</span>
             </Button>
           </Link>
         </div>

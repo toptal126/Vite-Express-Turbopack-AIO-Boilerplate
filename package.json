@@ -1,7 +1,7 @@
 {
-  "name": "polypulse-monorepo",
+  "name": "mern-turbopack-aio",
   "version": "1.0.0",
-  "description": "PolyPulse - Polymarket Assistant Dashboard with Frontend and Backend",
+  "description": "MERN-Turbopack-AIO - Monorepo for MERN-Turbopack-AIO-Boilerplate",
   "private": true,
   "workspaces": [
     "apps/*",

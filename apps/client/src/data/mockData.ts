@@ -48,13 +48,6 @@ export const mockData = {
           events24h: 38,
           lastUpdate: "2025-10-21T13:12:00Z",
         },
-        {
-          id: "truth",
-          name: "Truth Social",
-          status: "on",
-          events24h: 12,
-          lastUpdate: "2025-10-21T13:11:20Z",
-        },
       ],
       status: "on",
     },
@@ -177,7 +170,7 @@ export const mockData = {
     },
     {
       marketId: "PM-PO-HOUSE-CRYPTOBILL-Q4-2025",
-      title: "US House to pass crypto market-structure bill by Q4 2025?",
+      title: "US House to pass crypto structure bill by Q4 2025?",
       category: "Politics",
       yesOdds: 0.41,
       noOdds: 0.59,

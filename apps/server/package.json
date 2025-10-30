@@ -1,7 +1,7 @@
 {
-    "name": "@polypulse/server",
+    "name": "@mern-turbopack-aio/server",
     "version": "1.0.0",
-    "description": "PolyPulse Backend API",
+    "description": "MERN-Turbopack-AIO Backend API",
     "main": "dist/index.js",
     "type": "module",
     "scripts": {
@@ -14,7 +14,7 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
-        "@polypulse/shared": "workspace:*",
+        "@mern-turbopack-aio/shared": "workspace:*",
         "express": "^4.21.1",
         "cors": "^2.8.5",
         "helmet": "^8.0.0",

@@ -1,7 +1,7 @@
 {
-    "name": "@polypulse/shared",
+    "name": "@mern-turbopack-aio/shared",
     "version": "1.0.0",
-    "description": "Shared types and utilities for PolyPulse",
+    "description": "Shared types and utilities for MERN-Turbopack-AIO-Boilerplate",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "type": "module",

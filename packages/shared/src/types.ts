@@ -1,6 +1,4 @@
-import { Document } from "mongoose";
-
-export interface IFeedingEvent extends Document {
+export interface IFeedingEvent {
   timestamp: Date;
   feedCount: number;
   postsReceived: number;

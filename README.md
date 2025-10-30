@@ -5,7 +5,7 @@
 This project follows the recommended monorepo structure using Turborepo:
 
 ```
-polypulse/
+mern-turbopack-aio-boilerplate/
 ├── apps/
 │   ├── client/        # React + TypeScript + Vite frontend
 │   └── server/        # Express + TypeScript + MongoDB backend
@@ -71,7 +71,7 @@ This Turborepo structure provides several key benefits:
 
    ```sh
    git clone <YOUR_GIT_URL>
-   cd polypulse
+   cd mern-turbopack-aio-boilerplate
    ```
 
 2. **Install dependencies**
@@ -93,7 +93,7 @@ This Turborepo structure provides several key benefits:
 
    ```sh
    # Install and start MongoDB locally
-   # Then update apps/server/.env with: MONGODB_URI=mongodb://localhost:27017/polypulse
+   # Then update apps/server/.env with: MONGODB_URI=mongodb://localhost:27017/mern_turbopack_aio
    ```
 
 5. **Start development servers**
@@ -103,8 +103,8 @@ This Turborepo structure provides several key benefits:
    pnpm dev
 
    # Or start individual apps:
-   pnpm --filter @polypulse/client dev  # Client on http://localhost:8818
-   pnpm --filter @polypulse/server dev  # Server on http://localhost:3001
+   pnpm --filter @mern-turbopack-aio/client dev  # Client on http://localhost:4444
+   pnpm --filter @mern-turbopack-aio/server dev  # Server on http://localhost:4443
    ```
 
 ## Available Scripts
@@ -121,18 +121,18 @@ This Turborepo structure provides several key benefits:
 
 ### Individual Apps
 
-- `pnpm --filter @polypulse/client dev` - Start client development server
-- `pnpm --filter @polypulse/client build` - Build client for production
-- `pnpm --filter @polypulse/client preview` - Start client production server
-- `pnpm --filter @polypulse/server dev` - Start server development server
-- `pnpm --filter @polypulse/server build` - Build server for production
-- `pnpm --filter @polypulse/server start` - Start server production server
+- `pnpm --filter @mern-turbopack-aio/client dev` - Start client development server
+- `pnpm --filter @mern-turbopack-aio/client build` - Build client for production
+- `pnpm --filter @mern-turbopack-aio/client preview` - Start client production server
+- `pnpm --filter @mern-turbopack-aio/server dev` - Start server development server
+- `pnpm --filter @mern-turbopack-aio/server build` - Build server for production
+- `pnpm --filter @mern-turbopack-aio/server start` - Start server production server
 
 ### Shared Packages
 
-- `pnpm --filter @polypulse/types build` - Build shared types package
-- `pnpm --filter @polypulse/utils build` - Build shared utils package
-- `pnpm --filter @polypulse/ui build` - Build shared UI package
+- `pnpm --filter @mern-turbopack-aio/types build` - Build shared types package
+- `pnpm --filter @mern-turbopack-aio/utils build` - Build shared utils package
+- `pnpm --filter @mern-turbopack-aio/ui build` - Build shared UI package
 
 ## API Endpoints
 
@@ -140,11 +140,7 @@ This Turborepo structure provides several key benefits:
 
 - `GET /api/health` - Server health status
 
-### Polymarket Integration
-
-- `GET /api/polymarket/search?query={query}&limit={limit}&offset={offset}&sortBy={sortBy}` - Search markets
-- `GET /api/polymarket/market/{marketId}` - Get market details
-- `GET /api/polymarket/market/{marketId}/history?days={days}` - Get market price history
+<!-- External integration endpoints intentionally omitted in boilerplate -->
 
 ## Environment Variables
 
@@ -152,17 +148,17 @@ This Turborepo structure provides several key benefits:
 
 ```env
 # Server Configuration
-PORT=3001
+PORT=4443
 NODE_ENV=development
 
 # Database
-MONGODB_URI=mongodb://localhost:27017/polypulse
+MONGODB_URI=mongodb://localhost:27017/mern_turbopack_aio
 
 # Frontend URL (for CORS)
-FRONTEND_URL=http://localhost:8818
+FRONTEND_URL=http://localhost:4444
 
-# Polymarket API
-POLYMARKET_API_BASE=https://gamma-api.polymarket.com
+# External API configuration
+# Add external API base URLs here as needed
 
 
 # Rate Limiting
@@ -174,55 +170,46 @@ RATE_LIMIT_MAX_REQUESTS=100
 
 The client uses Vite environment variables:
 
-- `VITE_API_URL` - Server API URL (default: http://localhost:3001/api)
+- `VITE_API_URL` - Server API URL (default: http://localhost:4443/api)
 
 ## Features
 
 ### Dashboard Overview
 
-- **High-density interface**: Compact, information-rich dashboard for efficient market monitoring
-- **Real-time data**: Live updates on market prices, volumes, and trends
-- **Signal tracking**: Monitor and track market signals and alerts
-- **Active tickets**: View and manage active trading positions
+- **High-density interface**: Compact, information-rich dashboard for monitoring data and insights
+- **Real-time data**: Live updates on key metrics and trends
+- **Signal tracking**: Monitor and track signals and alerts
+- **Active items**: View and manage active positions
 
-### Market Search & Analysis
+### Discovery & Analysis
 
-- **Search Markets**: Search for prediction markets on Polymarket using keywords
-- **Sort by Volume**: Sort results by trading volume, creation date, or closing date
-- **Market Cards**: Display market information including:
-  - Market image and question
-  - Current price and 24h change
-  - Trading volume
+- **Search**: Find items using keywords
+- **Sort**: Sort results by relevant metrics (e.g., volume, date)
+- **Item Cards**: Display key information including:
+  - Title and image
+  - Current value and 24h change
+  - Volume/activity
   - Creation and closing dates
   - Trend indicators
-- **Market Details**: View detailed market information with:
-  - Interactive price charts (30-day history)
-  - Market statistics (liquidity, fees, etc.)
-  - Outcome token information
-  - Direct links to Polymarket
+- **Details View**: Explore detailed information with:
+  - Interactive charts (e.g., 30-day history)
+  - Statistics (e.g., liquidity, fees)
+  - Additional metadata
+  - Direct links to external sources
 
 ### Navigation & User Experience
 
 - **Splash screen**: Professional loading experience with progress indicators
 - **Responsive design**: Optimized for desktop and mobile viewing
 - **Fast loading**: Efficient data fetching and caching
-- **External integration**: Direct links to Polymarket for trading
+- **External integration**: Direct links to external platforms for trading
 
-## API Integration
-
-This project integrates with the Polymarket Gamma API to fetch:
-
-- Market search results
-- Market details and statistics
-- Historical price data for charts
-- Market metadata and outcome tokens
-
-The backend API service handles error cases gracefully and provides fallback data when needed.
+<!-- API Integration details for specific external providers intentionally omitted in boilerplate -->
 
 ## Deployment
 
 1. Build all apps and packages: `pnpm build`
-2. Start server: `pnpm --filter @polypulse/server start`
+2. Start server: `pnpm --filter @mern-turbopack-aio/server start`
 3. Serve client build files with a web server (nginx, Apache, etc.)
 
 ## Development Workflow

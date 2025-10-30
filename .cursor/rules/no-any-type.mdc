@@ -39,7 +39,7 @@ const data: any = response.data; // Only after approval
 
 ```typescript
 // Import from shared package
-import { ApiResponse, User } from "@polypulse/shared";
+import { ApiResponse, User } from "@mern-turbopack-aio/shared";
 
 const data: ApiResponse = response.data;
 const user: User = getUser();
@@ -93,7 +93,7 @@ export interface ApiResponse<T = unknown> {
 
 ```typescript
 // ✅ In apps/client or apps/server
-import { User, ApiResponse } from "@polypulse/shared";
+import { User, ApiResponse } from "@mern-turbopack-aio/shared";
 
 const user: User = { id: "1", name: "John", email: "john@example.com" };
 const response: ApiResponse<User> = await api.getUser();
@@ -118,6 +118,6 @@ const response: ApiResponse<User> = await api.getUser();
 1. **Check location**: Ensure you're in the shared package (`packages/shared/src/types/`)
 2. **Define interface**: Create the interface with proper TypeScript types
 3. **Export interface**: Make sure it's exported for use in other packages
-4. **Import in child repos**: Use `import { InterfaceName } from '@polypulse/shared'`
+4. **Import in child repos**: Use `import { InterfaceName } from '@mern-turbopack-aio/shared'`
 
 **This rule ensures type safety, prevents accidental loss of TypeScript benefits, and maintains a single source of truth for all interfaces.**

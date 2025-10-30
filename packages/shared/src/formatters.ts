@@ -1,5 +1,5 @@
 /**
- * Common formatting utilities for the Poly Pulse application
+ * Common formatting utilities for the dashboard application
  * Centralized formatting functions to avoid code duplication
  */
 
