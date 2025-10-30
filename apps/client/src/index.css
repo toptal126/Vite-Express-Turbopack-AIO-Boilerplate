@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Blur.io inspired compact design system */
+@layer base {
+  :root {
+    /* Base colors - darker, more subtle */
+    --background: 222 47% 4%;
+    --foreground: 220 14% 95%;
+
+    /* Card colors - minimal contrast */
+    --card: 222 47% 5%;
+    --card-foreground: 220 14% 95%;
+
+    /* Popover */
+    --popover: 222 47% 5%;
+    --popover-foreground: 220 14% 95%;
+
+    /* Primary - bright blue for dark background */
+    --primary: 217 91% 75%;
+    --primary-foreground: 220 14% 95%;
+
+    /* Secondary - brighter for dark background */
+    --secondary: 222 47% 8%;
+    --secondary-foreground: 220 14% 90%;
+
+    /* Muted - much lighter for readability on dark background */
+    --muted: 222 47% 15%;
+    --muted-foreground: 220 14% 75%;
+
+    /* Accent - brighter for dark background */
+    --accent: 222 47% 8%;
+    --accent-foreground: 220 14% 95%;
+
+    /* Status colors - brighter for dark background */
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 220 14% 95%;
+    --positive: 153 47% 60%;
+    --warning: 38 92% 65%;
+
+    /* Borders - visible on dark background */
+    --border: 220 13% 25%;
+    --input: 220 13% 20%;
+    --ring: 217 91% 75%;
+
+    /* Panels - minimal elevation */
+    --panel: 222 47% 5%;
+    --elevated: 222 47% 6%;
+
+    /* Border radius - smaller for compact feel */
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas",
+      "Courier New", monospace !important;
+  }
+
+  body {
+    @apply bg-background antialiased;
+    font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Consolas",
+      "Courier New", monospace !important;
+
+    color: #d1d5db;
+    font-size: 12px;
+    line-height: 1.4;
+    overflow: hidden; /* Prevent body scrolling */
+    height: 100vh; /* Full viewport height */
+  }
+
+  html {
+    overflow: hidden; /* Prevent html scrolling */
+    height: 100vh; /* Full viewport height */
+  }
+
+  .font-mono {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Compact component styles */
+@layer components {
+  /* Compact cards with minimal borders */
+  .compact-card {
+    @apply bg-card border border-border/30 rounded-sm p-3;
+  }
+
+  .compact-card-hover {
+    @apply hover:bg-elevated/50 transition-colors duration-150;
+  }
+
+  /* Subtle borders */
+  .border-subtle {
+    @apply border-border/20;
+  }
+
+  /* Compact buttons */
+  .btn-compact {
+    @apply h-7 px-2 text-xs font-medium rounded-sm;
+  }
+
+  /* Compact inputs */
+  .input-compact {
+    @apply h-8 px-2 text-xs rounded-sm border-border/30;
+  }
+
+  /* Compact badges */
+  .badge-compact {
+    @apply px-1.5 py-0.5 text-xs font-medium rounded-sm;
+  }
+
+  /* Status colors - direct color values to avoid circular dependency */
+  .text-positive {
+    color: hsl(var(--positive));
+  }
+
+  .text-destructive {
+    color: hsl(var(--destructive));
+  }
+
+  .text-muted {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  /* Compact spacing utilities */
+  .space-compact > * + * {
+    @apply mt-1;
+  }
+
+  .gap-compact {
+    @apply gap-1;
+  }
+
+  /* Minimal dividers */
+  .divider {
+    @apply border-t border-border/20;
+  }
+}

@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+description: "Check lint errors before completing AI tasks"
+---
+
+# Lint Error Check Rule
+
+**MANDATORY**: Always check for lint errors before completing any AI task or job.
+
+## Rules:
+
+- ✅ **ALWAYS** run lint checks after making code changes
+- ✅ **ALWAYS** fix lint errors before marking tasks as complete
+- ✅ **ALWAYS** verify code quality and style compliance
+- ❌ **NEVER** leave lint errors unresolved
+
+**This rule ensures code quality and consistency across the project.**

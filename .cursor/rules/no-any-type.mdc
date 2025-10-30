@@ -1,0 +1,123 @@
+---
+globs: *.ts,*.tsx
+description: Strict rule for avoiding any type usage in TypeScript
+---
+
+# No `any` Type Rule
+
+**MANDATORY**: Never use the `any` type without explicit user approval.
+
+## Rules:
+
+- ❌ **NEVER** use `any` type without asking the user first
+- ✅ **ALWAYS** ask for explicit approval before using `any`
+- ✅ **ALWAYS** prefer proper TypeScript types over `any`
+- ✅ **ALWAYS** use `unknown` instead of `any` when the type is truly unknown
+- ✅ **ALWAYS** create proper interfaces or types when possible
+- ❌ **NEVER** define interfaces in child repositories (apps/client, apps/server, etc.)
+- ✅ **ALWAYS** define interfaces in the shared package only
+- ✅ **ALWAYS** import interfaces from the shared package when needed
+
+## Examples:
+
+### ❌ Wrong - Using `any` without approval:
+
+```typescript
+const data: any = response.data;
+const user: any = getUser();
+```
+
+### ✅ Correct - Ask first:
+
+```typescript
+// Ask user: "I need to use 'any' type here. Is this acceptable?"
+// Only proceed after user approval
+const data: any = response.data; // Only after approval
+```
+
+### ✅ Better - Use proper types from shared package:
+
+```typescript
+// Import from shared package
+import { ApiResponse, User } from "@polypulse/shared";
+
+const data: ApiResponse = response.data;
+const user: User = getUser();
+```
+
+### ✅ Alternative - Use `unknown`:
+
+```typescript
+const data: unknown = response.data;
+// Then use type guards or assertions
+if (typeof data === "object" && data !== null) {
+  // Safe to use
+}
+```
+
+## Interface Definition Rules:
+
+### ❌ Wrong - Defining interfaces in child repositories:
+
+```typescript
+// ❌ NEVER do this in apps/client or apps/server
+interface User {
+  id: string;
+  name: string;
+}
+
+interface ApiResponse {
+  data: unknown;
+  status: number;
+}
+```
+
+### ✅ Correct - Define interfaces in shared package:
+
+```typescript
+// ✅ ALWAYS do this in packages/shared/src/types/
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface ApiResponse<T = unknown> {
+  data: T;
+  status: number;
+  message?: string;
+}
+```
+
+### ✅ Correct - Import and use in child repositories:
+
+```typescript
+// ✅ In apps/client or apps/server
+import { User, ApiResponse } from "@polypulse/shared";
+
+const user: User = { id: "1", name: "John", email: "john@example.com" };
+const response: ApiResponse<User> = await api.getUser();
+```
+
+## When `any` might be acceptable (with approval):
+
+1. **Legacy code integration** - When interfacing with untyped JavaScript libraries
+2. **Dynamic data structures** - When the structure is truly unknown at compile time
+3. **Migration scenarios** - During gradual TypeScript migration
+4. **Third-party APIs** - When API responses are unpredictable
+
+## Process for using `any`:
+
+1. **Stop and ask**: "I need to use the `any` type here. Is this acceptable?"
+2. **Explain why**: Provide context for why `any` is needed
+3. **Wait for approval**: Only proceed after explicit user confirmation
+4. **Document**: Add a comment explaining why `any` was used
+
+## Process for defining interfaces:
+
+1. **Check location**: Ensure you're in the shared package (`packages/shared/src/types/`)
+2. **Define interface**: Create the interface with proper TypeScript types
+3. **Export interface**: Make sure it's exported for use in other packages
+4. **Import in child repos**: Use `import { InterfaceName } from '@polypulse/shared'`
+
+**This rule ensures type safety, prevents accidental loss of TypeScript benefits, and maintains a single source of truth for all interfaces.**

@@ -1,0 +1,33 @@
+---
+alwaysApply: true
+description: Enforce axios usage over raw fetch
+---
+
+# Axios Usage Enforcement
+
+**MANDATORY**: Always use `axios` instead of raw `fetch()` for HTTP requests.
+
+## Rules:
+
+- ❌ **NEVER** use `fetch()` directly
+- ✅ **ALWAYS** use `axios` for all HTTP requests
+- ✅ Import axios: `import axios from 'axios'`
+
+## Examples:
+
+### ❌ Wrong - Raw fetch:
+
+```typescript
+const response = await fetch("/api/data");
+const data = await response.json();
+```
+
+### ✅ Correct - Axios:
+
+```typescript
+import axios from "axios";
+const response = await axios.get("/api/data");
+const data = response.data;
+```
+
+**This rule is non-negotiable. All HTTP requests must use axios.**

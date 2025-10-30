@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+description: pnpm package manager usage guidelines
+---
+
+# pnpm Usage Rules
+
+This project uses pnpm as the package manager. Always use pnpm commands instead of npm or yarn:

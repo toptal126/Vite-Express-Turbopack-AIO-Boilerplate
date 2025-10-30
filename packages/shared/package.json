@@ -1,0 +1,22 @@
+{
+    "name": "@polypulse/shared",
+    "version": "1.0.0",
+    "description": "Shared types and utilities for PolyPulse",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "lint": "eslint src --ext .ts,.tsx",
+        "type-check": "tsc --noEmit"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^22.16.5",
+        "@typescript-eslint/eslint-plugin": "^8.38.0",
+        "@typescript-eslint/parser": "^8.38.0",
+        "eslint": "^9.32.0",
+        "typescript": "^5.8.3"
+    }
+}
